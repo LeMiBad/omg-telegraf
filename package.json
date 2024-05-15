@@ -1,0 +1,14 @@
+{
+  "dependencies": {
+    "@types/express": "^4.17.21",
+    "axios": "^1.6.2",
+    "effector": "^23.2.1",
+    "express": "^4.19.2",
+    "telegraf": "^4.15.3",
+    "ts-node": "^10.9.2"
+  },
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "build": "tsc"
+  }
+}
