@@ -45,69 +45,69 @@ export const API = {
       return user;
     },
   },
-  threads: {
+  chats: {
     get: async (thread_id: string) => {
-      const thread = (await axios.post(`${host}threads/thread`, { thread_id }))
+      const thread = (await axios.post(`${host}chats/thread`, { thread_id }))
         .data;
 
       return thread;
     },
-    check: async (data: { tg_chat_id: string; message_id: string }) => {
-      const answer = (await axios.post(`${host}threads/check`, data)).data;
+    check: async (data: { tg_chats_id: string; message_id: string }) => {
+      const answer = (await axios.post(`${host}chats/check`, data)).data;
 
       return answer;
     },
     getMany: async (assistant_id: string) => {
-      const threads = (await axios.post(`${host}threads`, { assistant_id }))
-        .data;
+      const chats = (await axios.post(`${host}chats`, { assistant_id })).data;
 
-      return threads;
+      return chats;
     },
     create: async ({
       assistant_id,
-      tg_chat_id,
+      id,
     }: {
       assistant_id: string;
-      tg_chat_id: string;
+      id: string;
     }) => {
-      const threads = (
-        await axios.post(`${host}threads/create`, { assistant_id, tg_chat_id })
+      const chats = (
+        await axios.post(`${host}chats/create`, {
+          id,
+          assistant_id,
+          integration_type: "tg",
+        })
       ).data;
 
-      return threads;
+      return chats;
     },
-    delete: async (token: string, threads_ids: string[]) => {
+    delete: async (token: string, chats_ids: string[]) => {
       const ids = (
-        await axios.post(`${host}threads/delete`, { token, threads_ids })
+        await axios.post(`${host}chats/delete`, { token, chats_ids })
       ).data;
 
       return ids;
     },
     block: async (thread_id: string, blocked: boolean) => {
-      const threads = (
-        await axios.post(`${host}threads/block`, { thread_id, blocked })
+      const chats = (
+        await axios.post(`${host}chats/block`, { thread_id, blocked })
       ).data;
 
-      return threads;
+      return chats;
     },
     sendMessage: async ({
-      thread_id,
+      chat_id,
       message,
-      tg_chat_id,
     }: {
-      thread_id?: string;
+      chat_id?: string;
       message: any;
-      tg_chat_id: string;
     }) => {
-      const threads = (
-        await axios.post(`${host}threads/send`, {
-          thread_id,
+      const chats = (
+        await axios.post(`${host}chats/send`, {
+          chat_id,
           message,
-          tg_chat_id,
         })
       ).data;
 
-      return threads;
+      return chats;
     },
   },
   assistants: {
