@@ -1,7 +1,7 @@
 import axios from "axios";
 
-// let host = "https://omg-server-lilac.vercel.app/api/";
-let host = "http://localhost:3000/api/";
+let host = "https://omg-server-lilac.vercel.app/api/";
+// let host = "http://localhost:3000/api/";
 
 export const API = {
   users: {
