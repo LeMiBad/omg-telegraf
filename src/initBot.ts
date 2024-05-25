@@ -32,6 +32,7 @@ export const initBot = async ({ assistant_id, tg_token }: BotConfig) => {
       const tg_chat_id = String(ctx.chat.id);
 
       console.log(userMessage);
+      console.log(assistant_id);
 
       let message;
 
@@ -45,6 +46,7 @@ export const initBot = async ({ assistant_id, tg_token }: BotConfig) => {
           assistant_id,
           id: tg_chat_id,
         });
+
         message = await API.chats.sendMessage({
           chat_id: tg_chat_id,
           message: { role: "USER", message: userMessage },
