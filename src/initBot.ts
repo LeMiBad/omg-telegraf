@@ -29,7 +29,7 @@ export const initBot = async ({ assistant_id, tg_token }: BotConfig) => {
   bot.on("text", async (ctx) => {
     try {
       const userMessage = ctx.message.text;
-      const tg_chat_id = String(ctx.chat.id);
+      const tg_chat_id = String(ctx.chat.id) + String(assistant_id);
 
       console.log(userMessage);
       console.log(assistant_id);
