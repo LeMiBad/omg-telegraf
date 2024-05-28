@@ -1,7 +1,7 @@
 import axios from "axios";
 
-let host = "https://omg-server-lilac.vercel.app/api/";
-// let host = "http://localhost:3000/api/";
+// let host = "https://omg-server-lilac.vercel.app/api/";
+let host = "http://147.45.239.167/api/";
 
 export const API = {
   users: {
@@ -101,7 +101,7 @@ export const API = {
       message: any;
     }) => {
       const chats = (
-        await axios.post(`${host}chats/send`, {
+        await axios.post(`${host}chat/send`, {
           chat_id,
           message,
         })
