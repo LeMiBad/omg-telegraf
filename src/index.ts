@@ -53,3 +53,7 @@ app.post("/api/send", async (req, res) => {
 });
 
 app.listen(80, () => console.log(3333));
+
+// setTimeout(() => {
+//   process.exit(0)
+// }, 1000 * 60 * 60 * 3)

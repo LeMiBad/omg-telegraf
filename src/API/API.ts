@@ -1,6 +1,6 @@
 import axios from "axios";
 
-// let host = "https://omg-server-lilac.vercel.app/api/";
+// let host = "http://localhost:3000/api/";
 let host = "http://147.45.239.167/api/";
 
 export const API = {
@@ -70,7 +70,7 @@ export const API = {
       id: string;
     }) => {
       const chats = (
-        await axios.post(`${host}chats/create`, {
+        await axios.post(`${host}chat/create`, {
           id,
           assistant_id,
           integration_type: "tg",
