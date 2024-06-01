@@ -14,10 +14,11 @@ export const initBot = async ({ assistant_id, tg_token }: BotConfig) => {
 
   bot.start(async (ctx) => {
     try {
-      console.log("Бот стартовал:", ctx.chat.id);
+      const tg_chat_id = `${String(ctx.chat.id)}@${String(assistant_id)}`;
+
       await API.chats.create({
         assistant_id,
-        id: String(ctx.chat.id),
+        id: tg_chat_id,
       });
       ctx.reply("Напиши первое сообщение");
     } catch (error) {
@@ -29,7 +30,7 @@ export const initBot = async ({ assistant_id, tg_token }: BotConfig) => {
   bot.on("text", async (ctx) => {
     try {
       const userMessage = ctx.message.text;
-      const tg_chat_id = String(ctx.chat.id) + String(assistant_id);
+      const tg_chat_id = `${String(ctx.chat.id)}@${String(assistant_id)}`;
 
       console.log(userMessage);
       console.log(assistant_id);
