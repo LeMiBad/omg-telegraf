@@ -45,6 +45,8 @@ app.post("/api/send", async (req, res) => {
   try {
     const { bot_id, chat_id, content } = req.body;
 
+    console.log(bot_id, chat_id, content, 666)
+
     sendMessage({ bot_id, chat_id, content });
   } catch (error) {
     console.error("Ошибка при отправке сообщения:", error);
@@ -53,6 +55,7 @@ app.post("/api/send", async (req, res) => {
 });
 
 app.listen(80, () => console.log(3333));
+// app.listen(3000, () => console.log(3333));
 
 // setTimeout(() => {
 //   process.exit(0)
