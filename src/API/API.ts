@@ -1,6 +1,5 @@
 import axios from "axios";
 
-// let host = "http://localhost:3000/api/";
 let host = "http://147.45.239.167/api/";
 
 const secret = "5fd49436-2965-45f3-b1a1-0bb1eef7d6bd";
