@@ -27,6 +27,10 @@ export const initBot = async ({ assistant_id, tg_token }: BotConfig) => {
     }
   });
 
+  bot.command('set_notification_chat', (ctx) => {
+    API.assistants.addNotificationToken({ chat_id: String(ctx.chat.id), assistant_id })
+  });
+
   bot.on("text", async (ctx) => {
     try {
       const userMessage = ctx.message.text;

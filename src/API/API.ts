@@ -3,6 +3,8 @@ import axios from "axios";
 // let host = "http://localhost:3000/api/";
 let host = "http://147.45.239.167/api/";
 
+const secret = "5fd49436-2965-45f3-b1a1-0bb1eef7d6bd";
+
 export const API = {
   users: {
     login: async ({ email, password }: { email: string; password: string }) => {
@@ -20,7 +22,7 @@ export const API = {
       const tokens = (
         await axios.post(
           `${host}users/tgTokens`,
-          { secret: "крякс" },
+          { secret },
           { withCredentials: false }
         )
       ).data;
@@ -112,10 +114,21 @@ export const API = {
   },
   assistants: {
     get: async (token: string) => {
-      const assistants = (await axios.post(`${host}assistants`, { token }))
+      const assistants = (await axios.post(`${host}assistant`, { token }))
         .data;
 
       return assistants;
+    },
+    addNotificationToken: async ({chat_id, assistant_id}: {chat_id: string, assistant_id: string}) => {
+      const tokens = (
+        await axios.post(
+          `${host}assistant/tg/notification`,
+          { secret, chat_id, assistant_id },
+          { withCredentials: false }
+        )
+      ).data;
+
+      return tokens;
     },
   },
 };

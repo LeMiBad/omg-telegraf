@@ -24,7 +24,7 @@ app.post("/api/init", async (req, res) => {
     res.status(200).json(botLink);
   } catch (error) {
     console.error("Ошибка инициализации нового бота:", error);
-    res.status(500).json({ error: "Ошибка инициализации нового бота" });
+    res.status(500).json({ error: "Ошибка инициализации нового бота", text: error });
   }
 });
 
@@ -37,7 +37,7 @@ app.post("/api/stop", async (req, res) => {
     res.status(200).json(tg_token);
   } catch (error) {
     console.error("Ошибка инициализации нового бота:", error);
-    res.status(500).json({ error: "Ошибка инициализации нового бота" });
+    res.status(500).json({ error: "Ошибка инициализации нового бота", text: error });
   }
 });
 
@@ -45,12 +45,10 @@ app.post("/api/send", async (req, res) => {
   try {
     const { bot_id, chat_id, content } = req.body;
 
-    console.log(bot_id, chat_id, content, 666)
-
     sendMessage({ bot_id, chat_id, content });
   } catch (error) {
     console.error("Ошибка при отправке сообщения:", error);
-    res.status(500).json({ error: "Ошибка инициализации нового бота" });
+    res.status(500).json({ error: "Ошибка инициализации нового бота", text: error });
   }
 });
 
