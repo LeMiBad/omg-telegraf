@@ -52,4 +52,4 @@ app.post("/api/send", async (req, res) => {
   }
 });
 
-app.listen(80, () => console.log(3333));
+app.listen(80, () => console.log('Сервер запущен'));
